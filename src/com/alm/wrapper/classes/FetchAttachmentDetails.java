@@ -233,7 +233,7 @@ public class FetchAttachmentDetails {
 					// Logic to check attachment name compliance
 					if (isAttachmentNameCompliant) {
 						try {
-							if (!attachmentName.split("_")[3].equalsIgnoreCase(ATTACHMENT_NAME_COMPLIANCE_CHECK_STRING)) {
+							if (!attachmentName.split("_")[2].equalsIgnoreCase(ATTACHMENT_NAME_COMPLIANCE_CHECK_STRING)) {
 								isAttachmentNameCompliant = false;
 							}
 						} catch (ArrayIndexOutOfBoundsException arrayException) {

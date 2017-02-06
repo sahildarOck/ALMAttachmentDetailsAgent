@@ -40,6 +40,7 @@ import jxl.write.WriteException;
 public class ALMLoginAndAttachmentWindow extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
+	private static final String VERSION = "v1.2.3";
 
 	private static final String FAILED_CONN_STRING = "Unable to connect to ALM...!!!";
 	private static final String SUCCESS_CONN_STRING = "Connected to ALM...";
@@ -94,6 +95,7 @@ public class ALMLoginAndAttachmentWindow extends JFrame implements ActionListene
 
 	public ALMLoginAndAttachmentWindow() {
 		setSize(480, 300);
+		setTitle("ALM Attachment Details Agent - " + VERSION);
 		setTitle("ALM Attachment Details Fetcher");
 		setLayout(null);
 
