@@ -40,7 +40,7 @@ import jxl.write.WriteException;
 public class ALMLoginAndAttachmentWindow extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private static final String VERSION = "v1.2.3";
+	private static final String VERSION = "v2.0.0";
 
 	private static final String FAILED_CONN_STRING = "Unable to connect to ALM...!!!";
 	private static final String SUCCESS_CONN_STRING = "Connected to ALM...";
