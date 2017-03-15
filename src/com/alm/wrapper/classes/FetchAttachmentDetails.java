@@ -422,28 +422,32 @@ public class FetchAttachmentDetails {
 		strDotDelimiter = attachmentName.split("\\.");
 		attachmentNameWithoutExtension = strDotDelimiter[0];
 		strUnderscoreDelimiter = attachmentNameWithoutExtension.split("_");
-		if (strDotDelimiter.length == 2) {
-			attachmentExtension = strDotDelimiter[1];
-			try {
-				if (attachmentExtension.equals("log") || attachmentExtension.equals("txt")) {
-					if (!strUnderscoreDelimiter[2].equalsIgnoreCase(MANDATED_LOG_TEXT_CONVENTION)) {
-						return false;
+		try {
+			if (strDotDelimiter.length == 2) {
+				attachmentExtension = strDotDelimiter[1];
+				try {
+					if (attachmentExtension.equals("log") || attachmentExtension.equals("txt")) {
+						if (!strUnderscoreDelimiter[2].equalsIgnoreCase(MANDATED_LOG_TEXT_CONVENTION)) {
+							return false;
+						}
+					} else {
+						if (!strUnderscoreDelimiter[2].equalsIgnoreCase(MANDATED_SCREENSHOT_TEXT_CONVENTION)) {
+							return false;
+						}
 					}
-				} else {
-					if (!strUnderscoreDelimiter[2].equalsIgnoreCase(MANDATED_SCREENSHOT_TEXT_CONVENTION)) {
-						return false;
-					}
+				} catch (ArrayIndexOutOfBoundsException arrayException) {
+					return false;
 				}
-			} catch (ArrayIndexOutOfBoundsException arrayException) {
+			} else {
+				if (!strUnderscoreDelimiter[2].equalsIgnoreCase(MANDATED_LOG_TEXT_CONVENTION)
+						&& !strUnderscoreDelimiter[2].equalsIgnoreCase(MANDATED_SCREENSHOT_TEXT_CONVENTION)) {
+					return false;
+				}
+			}
+			if (!strUnderscoreDelimiter[0].equals(testID)) {
 				return false;
 			}
-		}
-		else{
-			if(!strUnderscoreDelimiter[2].equalsIgnoreCase(MANDATED_LOG_TEXT_CONVENTION) && !strUnderscoreDelimiter[2].equalsIgnoreCase(MANDATED_SCREENSHOT_TEXT_CONVENTION)) {
-				return false;
-			}
-		}
-		if (!strUnderscoreDelimiter[0].equals(testID)) {
+		} catch (ArrayIndexOutOfBoundsException e) {
 			return false;
 		}
 		return isAttachmentNameCompliant;
